@@ -27,6 +27,9 @@ function ThemSo(){
     console.log("ThemSo ~ numberArr:", numberArr);
     // xóa giá trị ở ô input sau khi nhập
     document.getElementById("number").value = "";
+
+    // Focus vào ô input sau khi thêm số
+    inputNumber.focus();
     // Xây dựng chuỗi để hiển thị tất cả các giá trị trong mảng
     var arrContent = "Mảng đã thêm là:[ ";
     for (var i = 0; i < numberArr.length; i++) {
