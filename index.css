@@ -11,17 +11,26 @@
 html, body {
     height: 100%;
     background-color: #152733;
+    overflow: hidden;
 }
 
+.form-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+}
 
-.form-holder {
+/* .form-holder {
       display: flex;
-      justify-content: center;
       flex-direction: column;
+      justify-content: center;
       align-items: center;
       text-align: center;
       min-height: 100vh;
-}
+} */
 
 .form-holder .form-content {
     position: relative;
@@ -35,7 +44,7 @@ html, body {
     justify-content: center;
     -webkit-align-items: center;
     align-items: center;
-    padding: 20px 60px;
+    padding: 60px;
 }
 
 .form-content .form-items {
@@ -60,11 +69,23 @@ html, body {
     margin-bottom: 5px;
 }
 
+.form-content {
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    height: 100vh; /* Đảm bảo rằng nội dung luôn nằm giữa trang */
+}
+
+
 .form-content h3.form-title {
     margin-bottom: 30px;
 }
 
-.form-content p {
+.form-content .showArr {
     color: #fff;
     text-align: left;
     font-size: 17px;
@@ -134,10 +155,6 @@ html, body {
     color: #8D8D8D;
 }
 
-.form-button button{
-    margin-left:70%;
-}
-
 .mv-up{
     margin-top: -9px !important;
     margin-bottom: 8px !important;
@@ -151,27 +168,70 @@ html, body {
    color: #2acc80;
 }
 
-.pb50 {
-    padding-bottom: 50px;
+.input1 {
+    position: relative;
+    right: 15px;
 }
 
-.btn-check {
-    margin: 0 5px;
+.formInput {
+    display: flex;
+    align-items: center;
+}
+
+.input1 {
+    flex-grow: 1; /* Mở rộng input1 để lấp đầy khoảng trống trống còn lại */
+}
+
+.btn1 {
+    margin-top: 15px; /* Di chuyển button xuống 10px */
+    margin-left: 10px; /* Điều chỉnh khoảng cách giữa input1 và btn1 */
+}
+
+.inputAdd1,
+.inputAdd2 {
+    position: relative;
+    right: 15px;
+}
+
+.btn2 {
+    position: relative;
+    left: 83%;
 }
 
 
 
-/* Thêm class cho phần tử cha của form để giới hạn chiều cao */
-
-/* Loại bỏ margin-bottom không cần thiết từ footer */
-footer {
-    margin-bottom: 0;
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+    width: 50%;
+    padding: 9px 20px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 16px;
 }
 
-/* Sửa lỗi viền bao quanh các phần tử input */
-.form-content input[type="text"],
-.form-content input[type="password"],
-.form-content input[type="email"],
-.form-content select {
-    border: 1px solid #8D8D8D; /* Thay đổi màu viền nếu cần */
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+    width: 75%;
+    padding: 7px 23px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+.showArr {
+    margin-top: 10px;
 }

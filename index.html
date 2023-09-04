@@ -5,151 +5,74 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+     <!-- sweet alert css  -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- sweet alert css  -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.min.css">
-    <!-- main css  -->
-    <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="./css/bai1.css">
+    <link rel="stylesheet" href="./index.css">
   </head>
   <body>
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>BÀI TẬP VỀ NHÀ</h3>
+                        <div class="showArr">
+                           <p>Mảng đã thêm là:</p>
+                          </div>
+                        <div class="requires-validation" novalidate>
 
-    <!-- 
-        Input: Điểm chuẩn hội đồng, điểm 3 môn thi, khu vực, đối tượng dự thi
-   
-        Xử lý:
-    B1:tạo biến diemChuan, diemMon1, diemMon2, diemMon3, khuVuc, doiTuong, diemUuTien, diemTongKet
-    B2: gán giá trị cho diemChuan, diemMon1, diemMon2, diemMon3, doiTuong
-    B3: xét điểm 3 môn khác nếu có môn bằng 0 thì trả về rớt, nếu không có môn nào bằng 0 thì tiếp tục xét
-    B4: tính điểm ưu tiên bằng cách cộng điểm khu vực và đối tượBg: diemUuTien = khuVuc+doiTuong
-    B5: tính điểm tổng bằng cách cộng điểm 3 môn và điểm ưu tiên: diemTongKet= diemUuTien + diemMon1 + diemMon2 + diemMon3
-    B6: so sánh với điểm chuẩn, nếu điểm tổng lớn hơn hoặc bằng điểm chuẩn thì trả về đậu, nếu ngược lại thì rớt
-    B7: in ra kết quả đậu hay rớt
-    
-        OutPut: Kết quả trúng tuyển -->
-        
-
-<!-- begin nav .include -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarDefault">
-        <ul class="navbar-nav row px-2 px-md-0 ml-md-auto mr-1">
-            <li class="nav-item contact">
-                <a class="nav-link" href="./index.html">Bài 1</a>
-            </li>
-            <li class="nav-item contact">
-                <a class="nav-link" href="./bai2.html">Bài 2</a>
-            </li>
-            <li class="nav-item contact">
-                <a class="nav-link" href="./bai3.html">Bài 3</a>
-            </li>
-            <li class="nav-item contact">
-                <a class="nav-link" href="./bai4.html">Bài 4</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<!-- /end nav .include -->
-
-<div class="form-body pb50">
-    <div class="row">
-        <div class="form-holder">
-            <div class="form-content">
-                <div class="form-items">
-                    <h3>Quản lý tuyển sinh</h3>
-                    <form class="requires-validation" novalidate>
-
-                        <div class="col-md-12">
-                           <input class="form-control" type="text" id="diemChuan" name="diemchuan" placeholder="Điểm chuẩn" required>
-                           <div class="valid-feedback">Đã nhập</div>
-                           <div class="invalid-feedback">Bạn chưa nhập điểm </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <input class="form-control" type="text" name="diemmon1" id="diemMon1" placeholder="Điểm môn thứ nhất" required>
-                             <div class="valid-feedback">Đã nhập</div>
-                             <div class="invalid-feedback">Bạn chưa nhập điểm </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <input class="form-control" type="text" name="diemmon2" id="diemMon2" placeholder="Điểm môn thứ hai" required>
-                             <div class="valid-feedback">Đã nhập</div>
-                             <div class="invalid-feedback">Bạn chưa nhập điểm </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <input class="form-control" type="text" name="diemmon3" id="diemMon3" placeholder="Điểm môn thứ ba" required>
-                             <div class="valid-feedback">Đã nhập</div>
-                             <div class="invalid-feedback">Bạn chưa nhập điểm </div>
-                        </div>
-
-                       <div class="col-md-12 mt-3">
-                        <label class="mb-3 mr-1" for="khuvuc">Khu vực: &nbsp;</label>
-
-                        <input type="radio" class="btn-check" name="khuvuc" id="kvA" onclick="layKhuVuc();" autocomplete="off" required>
-                        <label class="btn btn-sm btn-outline-secondary" for="kvA">A</label>
-
-                        <input type="radio" class="btn-check" name="khuvuc" id="kvB" onclick="layKhuVuc();" autocomplete="off" required>
-                        <label class="btn btn-sm btn-outline-secondary" for="kvB">B</label>
-
-                        <input type="radio" class="btn-check" name="khuvuc" id="kvC" onclick="layKhuVuc();" autocomplete="off" required>
-                        <label class="btn btn-sm btn-outline-secondary" for="kvC">C</label>
-
-                        <input type="radio" class="btn-check" name="khuvuc" id="kvX" onclick="layKhuVuc();" autocomplete="off" required>
-                        <label class="btn btn-sm btn-outline-secondary" for="kvX">X</label>
-
-                        <div class="valid-feedback mv-up">Bạn đã chọn khu vực này !</div>
-                        <div class="invalid-feedback mv-up">Vui lòng chọn khu vực này !</div>
-                        </div>
-
-                        <div class="col-md-12 mt-3">
-                            <label class="mb-3 mr-1" for="doituong">Đối tượng: </label>
-    
-                            <input type="radio" class="btn-check" name="doituong" id="dt0" onclick="layDoiTuong();" autocomplete="off" required>
-                            <label class="btn btn-sm btn-outline-secondary" for="dt0">0</label>
-    
-                            <input type="radio" class="btn-check" name="doituong" id="dt1" onclick="layDoiTuong();" autocomplete="off" required>
-                            <label class="btn btn-sm btn-outline-secondary" for="dt1">1</label>
-    
-                            <input type="radio" class="btn-check" name="doituong" id="dt2" onclick="layDoiTuong();" autocomplete="off" required>
-                            <label class="btn btn-sm btn-outline-secondary" for="dt2">2</label>
-    
-                            <input type="radio" class="btn-check" name="doituong" id="dt3" onclick="layDoiTuong();" autocomplete="off" required>
-                            <label class="btn btn-sm btn-outline-secondary" for="dt3">3</label>
-    
-                            <div class="valid-feedback mv-up">Bạn đã chọn đối tượng này !</div>
-                            <div class="invalid-feedback mv-up">>Vui lòng chọn đối tượng này !</div>
+                            <div class="col-md-12 formInput">
+                                <input class="form-control input1" type="text" name="name" id="number" placeholder="Nhập số vào mảng" required>
+                                <button class="btn btn-info btn1" onclick="ThemSo()">Thêm</button>
                             </div>
 
-                    <div class="form-check" >
-                      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                      <label class="form-check-label">Tôi xác nhận tất cả dữ liệu đều đúng!</label>
-                     <div class="invalid-feedback">Vui lòng xác nhận dữ liệu bạn đã nhập!</div>
-                    </div>
-              
-
-                        <div class="form-button mt-3">
-                            <button type="submit" id="submitButton" class="btn btn-primary" onclick="xuatKetQua()">XUẤT KẾT QUẢ</button>
+                            <div class="col-md-12 row mt-3">
+                                <div class="col-md-6 inputAdd  inputAdd1">
+                                    <input class="form-control" type="text" name="viTri1" id="viTri1" placeholder="Nhập vị trí thứ nhất" required>
+                                    <div class="valid-feedback">Đã nhập</div>
+                                    <div class="invalid-feedback">Bạn chưa nhập</div>
+                                </div>
+                            
+                                <div class="col-md-6 inputAdd inputAdd2">
+                                    <input class="form-control" type="text" name="viTri2" id="viTri2" placeholder="Nhập vị trí thứ hai" required>
+                                    <div class="valid-feedback">Đã nhập</div>
+                                    <div class="invalid-feedback">Bạn chưa nhập</div>
+                                </div>
+                            </div>
+                            
+                            <div class="input-group select1">
+                                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                  <option selected>Choose...</option>
+                                  <option id="op1" value="1">Tổng các số dương trong mảng.</option>
+                                  <option id="op2" value="2">Đếm có bao nhiêu số dương trong mảng.</option>
+                                  <option id="op3" value="3">Tìm số nhỏ nhất trong mảng.</option>
+                                  <option id="op4" value="4">Tìm số dương nhỏ nhất trong mảng.</option>
+                                  <option id="op5" value="5">Tìm số chẵn cuối cùng trong mảng</option>
+                                  <option id="op6" value="6">Đổi chỗ 2 giá trị trong mảng theo vị trí</option>
+                                  <option id="op7" value="7">Sắp xếp mảng theo thứ tự tăng dần.</option>
+                                  <option id="op8" value="8">Tìm số nguyên tố đầu tiên trong mảng</option>
+                                  <option id="op9" value="9">Nhập thêm 1 mảng số thực, tìm xem trong mảng có bao nhiêu số nguyên
+                                </option>
+                                  <option id="op10" value="10">So sánh số lượng số dương và số lượng số âm xem số nào nhiều hơn</option>
+                                </select>
+                              
                         </div>
-                    </form>
+
+                            <div class="form-button mt-3" id="result"></div>
+                            <button class="btn btn-primary btn2"onclick="DuyetMang()">Kết Quả</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<footer class="pb50 mb50"></footer>
-    <!-- main script  -->
-    <script src="./js/bai1.js"></script>
-    <script src="./js/index.js"></script>
+    <!-- Optional JavaScript -->
+    <script src="./index.js"></script>
     <!-- sweet alert js  -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
